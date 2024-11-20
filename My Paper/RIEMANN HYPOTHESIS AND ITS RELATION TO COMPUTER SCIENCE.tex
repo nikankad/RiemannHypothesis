@@ -43,7 +43,7 @@
 %--------------------------------------------------------------------------------------------------------------
 \begin{document}
 
-\title{Riemann Hypothesis and its relation to computer science}
+\title{Riemann Hypothesis and its relation to prime numbers}
 
 \author{Nikan Kadkhodazadeh}
 \address{Department of Computer Science, University of Southern Maine, 
@@ -71,7 +71,13 @@ He mentions a conjecture about the zeros of the zeta function known as the \text
         \textbf{Riemann Hypothesis}. The Riemann hypothesis states that the zeros of the zeta function that lie between $0 \leq s \leq 1$ have $\operatorname{\Re}(s) = \frac{1}{2}$.
     }%
 }
+\\
 
+In 1737, the connection between the zeta function and prime numbers was discovered by Euler, who proved the identity 
+$$\sum_{n=1}^\infty \frac{1}{n^s} = 
+  \prod_{p \ prime} \frac{1}{1-p^{-1}} = \frac{1}{1-2^{-1}}
+ \cdot \frac{1}{1-3^{-1}} \cdot \frac{1}{1-5^{-1}} \cdot \frac{1}{1-7^{-1}} \cdot \frac{1}{1-11^{-1}} \ldots$$
+ \newpage
 %--------------------------------------------------------------------------------------------------------------
 \section{Preliminaries}
 %--------------------------------------------------------------------------------------------------------------
@@ -86,7 +92,7 @@ where $s \in \mathbb{C}.$
 We write $s$ as $a + bi$, where $a, b \in \mathbb{R}$, so that the real part of $s$ is $\operatorname{Re}(s) = a$ and the imaginary part is $\operatorname{Im}(s) = b$.
 \end{definition}
 %--------------------------
-\newpage
+
 \subsection{GAMMA FUNCTION}
 \begin{definition}
 The \textbf{Gamma Function}, denoted as $\Gamma(s)$, is defined as
@@ -109,9 +115,9 @@ $$ \pi(x) \approx \frac{x}{ln(x)}  $$
 We can use code and software to plot $\pi(x)$ and $\frac{x}{lnx}$. By running some code \cite{kadkhodazadeh2023riemanncode} we can get these plots:
 
 
-\newpage
+%\newpage
 
-\begin{figure*}[]
+\begin{figure*}[h!]
         \subfloat[$x=100$]{%
             \includegraphics[width=.48\linewidth]{../Images/primecounting10}%
             \label{subfig:a}%
@@ -176,12 +182,12 @@ This means that as $x$ approaches infinity, the error between the 2 functions ap
 Prime numbers are natural numbers greater than 1 that is \textbf{not} a product of two smaller natural numbers (2, 3, 5, 7, 11...). In 300 BC Euclid demonstrated that there are infinitely many prime numbers. Prime numbers have puzzled mathematicians for thousands of years, several historical questions regarding prime numbers are still unsolved. Primes are used in several aspects of information technology such as public-key cryptography which replies on the difficulty of factoring large numbers into their prime factors.
 \subsection{Cryptography} 	
 \subsubsection{The RSA system}
-The RSA system in cryptography makes uses of prime numbers to calculate its public and private keys. The strength of the system relies on the difficulty with the finding of the specific pair of prime numbers selected to create a large integer called the modulus. For example, 
+The RSA algorithm is said to secure 90\% of the internet. The "s" is "https" means secure and the security is provided based on RSA. The RSA system in cryptography makes use of prime numbers to calculate its public and private keys. The strength of the system relies on the difficulty with the finding of the specific pair of prime numbers selected to create a large integer called the modulus. For example, 
 if 11 and 17 are multiplied, it will give the number 187, when broken down, it will give the exact same 2 numbers. Therefore, the larger the number the stronger the encryption will be.
 \subsection{Quantum Computing}
-
-
-
+There is still no evidence that quantum computers can break numbers based on 1024 or 2048 encryption. Using the Riemann hypothesis would propose that prime numbers are divided predictably. Many mathematicians believe that the only accurate method of decryption is going to take place through quantum computing. There is a particular importance to prime factor factorization as the fundamental building block of all numbers. 
+\subsection{Hash table}
+Hashing is a standard algorithmic technique in computer algorithms that is used to reduce a large key into a small value that can be used as an index in a table. We use prime numbers so that the chances of two large keys matching the same index reduce. 
 
 %--------------------------------------------------------------------------------------------------------------
 
@@ -200,9 +206,8 @@ Riemann used a advanced technique called analytic continuation to extend the dom
     \caption{Zeta Function}
     \label{fig:euler_zeta}
 \end{figure}
-When Riemann extended the domain, in the new territory, the $\zeta(s)$ function can be seen crossing through the origin, what this means s that for some values, the $\zeta(s)$ function evaluates to 0, we call these \textbf{zeta zeros}. Some zeros are easy to find, when you input an even negative integer, you will get a zero. We call these the "trivial zeros". We do not care about these trivial zeros, what we are interested in are the non trivial zeros.
-
-\subsection{The Riemann Hypothesis}  These other zeta zeros exhibit a very compelling pattern, all the non trivial zeros lie within a single region called the \textbf{critical strip}, where $0\le s \le 1 $. Riemann proved that there are infinitely many zeros in the critical strip. Riemann hypothesized that all the non trivial zeros are not just anywhere in the strip but on a single vertical line, called the \textbf{critical line} which is where the $\Re(s) = \frac{1}{2}$. More formally.
+When Riemann extended the domain, in the new territory, the $\zeta(s)$ function can be seen crossing through the origin, what this means is that for some values, the $\zeta(s)$ function evaluates to 0, we call these \textbf{zeta zeros}. Some zeros are easy to find, when you input an even negative integer, you will get a zero. We call these the "trivial zeros". We do not care about these trivial zeros, what we are interested in are the non trivial zeros.
+\subsection{The Riemann Hypothesis}  These other zeta zeros exhibit a very compelling pattern, all the non trivial zeros lie within a single region called the \textbf{critical strip}, where $0\le s \le 1 $. Riemann proved that there are infinitely many zeros in the critical strip. Riemann hypothesized that all the non trivial zeros are not just anywhere in the strip but on a single vertical line, called the \textbf{critical line} which is where the $\Re(s) = \frac{1}{2}$. More formally,
 \newline
 \\
 \noindent\fbox{%
@@ -212,14 +217,45 @@ When Riemann extended the domain, in the new territory, the $\zeta(s)$ function 
 
 }
 \newline
-This is the million dollar problem. This statement is actually the crux of understanding the distribution of prime numbers. If proven to be correct, then the placement of prime numbers along the number line never deviated too much from the prime number set. At this point, you might be asking yourself "what does this have to do with prim.e numbers?"
+This is the million dollar problem. This statement is actually the crux of understanding the distribution of prime numbers.  At this point, you might be asking yourself "what does this have to do with prime numbers?"
 
-\subsection{Riemann's Hypothesis shows the distribution of prime numbers can be predicted}
-
-
+\section{Riemann's Hypothesis shows the distribution of prime numbers can be predicted}
+Let us continue with the assumption that the Riemann hypothesis holds, that is all non-trivial zeros of $\zeta(s)$ have real part equal to 1/2. We can now separate the sum over all zeros into a sum over non-trivial zeros and a sum over trivial zeros. We will end up with 
+$$\psi_0(x) + \log(2\pi) = x- 4\sqrt{x}\sum_\gamma{\frac{\cos(\gamma \log(x))+2\gamma \sin(\gamma \log(x)))}{1+4\gamma^2}} -\frac{1}{2}\log(1-x^{-2})$$
+Now let us plot this equation, this will allow us to clearly see the effect of including increasingly more zeros of the zeta function. Using the formula, one can approximate the number of primes up to and including a given number x to a very high accuracy. In fact, Von Koch proved that using the non-trivial zeros of the Riemann zeta function to error-correct the function is the "best possible" bound for the error term in the prime number theorem.
+    
+   \begin{figure*}[h!]
+        \subfloat[$0$ non trivial zeros]{%
+            \includegraphics[width=.48\linewidth]{../Images/0ntz}%
+            \label{subfig:a}%
+        }\hfill
+        \subfloat[$1$ non trivial zeros]{%
+            \includegraphics[width=.48\linewidth]{../Images/1ntz}%
+            \label{subfig:b}%
+        }\\
+        
+        \subfloat[$10$ non trivial zeros]{%
+            \includegraphics[width=.48\linewidth]{../Images/10ntz}%
+            \label{subfig:c}%
+        }\hfill
+        \subfloat[$100$ non trivial zeros]{%
+            \includegraphics[width=.48\linewidth]{../Images/100ntz}%
+            \label{subfig:d}%
+        }
+        \caption{Plots of prime counting function with non trivial zeros as a error term.}
+        \label{fig:fig}
+    \end{figure*}
+    
+   
+   
+   This clearly shows that the more non trivial zeros we add, the better the approximation for the prime counting function is. This is why the Riemann hypothesis is so important, if the hypothesis is true, the distribution of prime numbers is as regular as possible and can be predicted. Deviations in the zeros from the critical line would imply irregularities in the spacing of primes. Researches have computed trillions of non trivial zeros in the zeta function and all of them thus far have been found on the critical line $\Re(\frac{1}{2})$. 
+%--------------------------------------------------------------------------------------------------------------
+\section{Implications of proving the riemann hypothesis}
+Proving the Riemann Hypothesis would significantly impact computer science, particularly fields under number theory, algorithms and cryptography. As mentioned earlier, proof of the hypothesis would not comprise the RSA algorithm itself but will to us better understanding prime numbers and might lead to breakthroughs in the efficient factorizing of integers and that would be an issue for cryptography.
 
 %--------------------------------------------------------------------------------------------------------------
 \section{Conclusion}
+
 %--------------------------------------------------------------------------------------------------------------
 
 %--------------------------------------------------------------------------------------------------------------
