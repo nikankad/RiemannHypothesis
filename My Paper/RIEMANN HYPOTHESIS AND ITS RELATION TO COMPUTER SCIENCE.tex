@@ -51,8 +51,7 @@ Portland, ME}
 \email{nikan.kadkhodazadeh@maine.edu}
 
 \begin{abstract}
-This paper looks at the Riemann hypothesis and the connection between the distribution of prime numbers and the zeros of the Riemann zeta function. Despite being purely mathematical in conjecture, it has a profound connection to computer science. We will explore a couple of these connections and will explore the consequences of proving the hypothesis.
-\end{abstract}
+This paper looks at the Riemann hypothesis and the connection between the distribution of prime numbers and the zeros of the Riemann zeta function. Despite being purely mathematical in conjecture, it has a profound connection to computer science.\end{abstract}
 
 \maketitle
 \tableofcontents
@@ -141,29 +140,29 @@ We can use code and software to plot $\pi(x)$ and $\frac{x}{lnx}$. By running so
 \subsection{The prime number theorem}
 $$\lim_{x\rightarrow\infty}\frac{\pi(x)}{\frac{x}{\ln(x)}} = 1$$
 This means that as $x$ approaches infinity, the error between the 2 functions approaches to 0. However, The blue and red lines seem to be diverging, not converging as $x$ gets larger, does this mean the \textbf{the prime number theorem} is wrong? No, The theorem does not say that the difference $\pi(x) - \frac{x}{ln(x)}$ gets smaller as $x$ gets larger, instead what it does say is that the \textbf{ratio} between the approximation and the actual value gets closer to 1 as n gets larger and larger.
-%\begin{table}[h!]
-%\centering
-%\label{tab:prime_counting_ratio}
-%\[
-%\begin{array}{|c|c|c|c|}
-%\hline
-%x & \pi(x) & \frac{x}{\ln(x)} & \text{Ratio} \left(\frac{\pi(x)}{x/\ln(x)}\right) \\
-%\hline
-%10^2 & 25 & 22 & 88.00\% \\
-%10^3 & 168 & 145 & 86.31\% \\
-%10^4 & 1229 & 1086 & 88.36\% \\
-%10^5 & 9592 & 8686 & 90.55\% \\
-%10^6 & 78498 & 72382 & 92.21\% \\
-%10^7 & 664579 & 620421 & 93.36\% \\
-%10^8 & 5761455 & 5428681 & 94.22\% \\
-%10^9 & 50847534 & 48254942 & 94.90\% \\
-%10^{10} & 455052511 & 434294482 & 95.44\% \\
-%\hline
-%\end{array}
-%\]
-%\caption{Prime Counting Function, Approximation, and Ratio}
+\begin{table}[h!]
+\centering
+\label{tab:prime_counting_ratio}
+\[
+\begin{array}{|c|c|c|c|}
+\hline
+x & \pi(x) & \frac{x}{\ln(x)} & \text{Ratio} \left(\frac{\pi(x)}{x/\ln(x)}\right) \\
+\hline
+10^2 & 25 & 22 & 88.00\% \\
+10^3 & 168 & 145 & 86.31\% \\
+10^4 & 1229 & 1086 & 88.36\% \\
+10^5 & 9592 & 8686 & 90.55\% \\
+10^6 & 78498 & 72382 & 92.21\% \\
+10^7 & 664579 & 620421 & 93.36\% \\
+10^8 & 5761455 & 5428681 & 94.22\% \\
+10^9 & 50847534 & 48254942 & 94.90\% \\
+10^{10} & 455052511 & 434294482 & 95.44\% \\
+\hline
+\end{array}
+\]
+\caption{Prime Counting Function, Approximation, and Ratio}
 
-%\end{table}
+\end{table}
 
 
 \begin{figure}[h!]
@@ -188,6 +187,11 @@ if 11 and 17 are multiplied, it will give the number 187, when broken down, it w
 There is still no evidence that quantum computers can break numbers based on 1024 or 2048 encryption. Using the Riemann hypothesis would propose that prime numbers are divided predictably. Many mathematicians believe that the only accurate method of decryption is going to take place through quantum computing. There is a particular importance to prime factor factorization as the fundamental building block of all numbers. 
 \subsection{Hash table}
 Hashing is a standard algorithmic technique in computer algorithms that is used to reduce a large key into a small value that can be used as an index in a table. We use prime numbers so that the chances of two large keys matching the same index reduce. 
+\\
+
+The Riemann Hypothesis has many other important corollaries in Computer Science. In particular, the best known today deterministic test for the primality of a number p has complexity
+$\Omega (p6)$ but already in 1976 G.L. Miller proposed an algorithm of complexity $O(p4)$ assuming the validity of the (extended) Riemann Hypothesis \cite{MATIYASEVICH2020257}.
+
 
 %--------------------------------------------------------------------------------------------------------------
 
@@ -207,16 +211,21 @@ Riemann used a advanced technique called analytic continuation to extend the dom
     \label{fig:euler_zeta}
 \end{figure}
 When Riemann extended the domain, in the new territory, the $\zeta(s)$ function can be seen crossing through the origin, what this means is that for some values, the $\zeta(s)$ function evaluates to 0, we call these \textbf{zeta zeros}. Some zeros are easy to find, when you input an even negative integer, you will get a zero. We call these the "trivial zeros". We do not care about these trivial zeros, what we are interested in are the non trivial zeros.
+\subsection{Riemman zeta function }
+The complex 
+
 \subsection{The Riemann Hypothesis}  These other zeta zeros exhibit a very compelling pattern, all the non trivial zeros lie within a single region called the \textbf{critical strip}, where $0\le s \le 1 $. Riemann proved that there are infinitely many zeros in the critical strip. Riemann hypothesized that all the non trivial zeros are not just anywhere in the strip but on a single vertical line, called the \textbf{critical line} which is where the $\Re(s) = \frac{1}{2}$. More formally,
-\newline
+
 \\
+
 \noindent\fbox{%
     \parbox{\textwidth}{%
         \textbf{The Riemann hypothesis} states that the zeros of the zeta function that lie between $0 \leq s \leq 1$ have $\operatorname{\Re}(s) = \frac{1}{2}$.
     }%
 
 }
-\newline
+\\
+
 This is the million dollar problem. This statement is actually the crux of understanding the distribution of prime numbers.  At this point, you might be asking yourself "what does this have to do with prime numbers?"
 
 \section{Riemann's Hypothesis shows the distribution of prime numbers can be predicted}
@@ -250,8 +259,6 @@ Now let us plot this equation, this will allow us to clearly see the effect of i
    
    This clearly shows that the more non trivial zeros we add, the better the approximation for the prime counting function is. This is why the Riemann hypothesis is so important, if the hypothesis is true, the distribution of prime numbers is as regular as possible and can be predicted. Deviations in the zeros from the critical line would imply irregularities in the spacing of primes. Researches have computed trillions of non trivial zeros in the zeta function and all of them thus far have been found on the critical line $\Re(\frac{1}{2})$. 
 %--------------------------------------------------------------------------------------------------------------
-\section{Implications of proving the riemann hypothesis}
-Proving the Riemann Hypothesis would significantly impact computer science, particularly fields under number theory, algorithms and cryptography. As mentioned earlier, proof of the hypothesis would not comprise the RSA algorithm itself but will to us better understanding prime numbers and might lead to breakthroughs in the efficient factorizing of integers and that would be an issue for cryptography.
 
 %--------------------------------------------------------------------------------------------------------------
 \section{Conclusion}
